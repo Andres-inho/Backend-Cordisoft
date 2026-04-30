@@ -87,13 +87,13 @@ export const cerrarSesion = async (req, res) => {
 export const obtenerEstado = async (req, res) => {
   const { telefono } = req.params;
   try {
-    const [rows] = await db.query(
+    const [rows] = await conexionDb.query(
       'SELECT paso, correo FROM estado_login_whatsapp WHERE telefono = ?',
       [telefono]
     );
     if (rows.length === 0) {
       // Primera vez que escribe — crear estado inicial
-      await db.query(
+      await conexionDb.query(
         'INSERT INTO estado_login_whatsapp (telefono, paso) VALUES (?, "esperando_correo")',
         [telefono]
       );
@@ -108,7 +108,7 @@ export const obtenerEstado = async (req, res) => {
 export const guardarEstado = async (req, res) => {
   const { telefono, paso, correo } = req.body;
   try {
-    await db.query(
+    await conexionDb.query(
       `INSERT INTO estado_login_whatsapp (telefono, paso, correo) VALUES (?, ?, ?)
        ON DUPLICATE KEY UPDATE paso = VALUES(paso), correo = VALUES(correo)`,
       [telefono, paso, correo || null]
