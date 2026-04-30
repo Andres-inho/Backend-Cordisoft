@@ -1,4 +1,4 @@
-import { conexionDb } from "../conexionDb/conexionDb.js";
+import { conexionDb } from "../conexionDb/ConexionDb.js";
 
 export const crearArea=async(req,resp)=>{
     const {descripcion,nombre,estado,id_usuario}=req.body

@@ -1,4 +1,4 @@
-import { conexionDb } from "../conexionDb/conexionDb.js";
+import { conexionDb } from "../conexionDb/ConexionDb.js";
 import bcrypt from "bcryptjs"
 
 export const crearUsuario = async (req, resp) => {

@@ -1,4 +1,4 @@
-import { conexionDb } from "../conexionDb/conexionDb.js";
+import { conexionDb } from "../conexionDb/ConexionDb.js";
 
 export const crearMaterial = async (req, resp) => {
     const { nombre, codigo, tipo, estado, descripcion, id_area, cantidad, id_bodega, id_ficha } = req.body

@@ -1,4 +1,4 @@
-import { conexionDb } from "../conexionDb/conexionDb.js";
+import { conexionDb } from "../conexionDb/ConexionDb.js";
 
 export const crearRol=async(req,resp)=>{
     const {nombre}=req.body

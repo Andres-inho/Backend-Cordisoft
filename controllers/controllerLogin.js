@@ -1,4 +1,4 @@
-import {conexionDb} from "../conexionDb/conexionDb.js"
+import {conexionDb} from "../conexionDb/ConexionDb.js"
 import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
 

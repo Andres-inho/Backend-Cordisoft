@@ -1,4 +1,4 @@
-import { conexionDb } from "../conexionDb/conexionDb.js";
+import { conexionDb } from "../conexionDb/ConexionDb.js";
 
 export const crearDetalleSolicitud = async (req, resp) => {
     const { id_solicitud, id_material, cantidad, id_aprendiz } = req.body

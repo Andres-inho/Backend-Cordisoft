@@ -1,4 +1,4 @@
-import { conexionDb } from "../conexionDb/conexionDb.js";
+import { conexionDb } from "../conexionDb/ConexionDb.js";
 
 export const crearBodega = async (req, resp) => {
     const { nombre, ubicacion, estado, id_area } = req.body

@@ -1,4 +1,4 @@
-import { conexionDb } from "../conexionDb/conexionDb.js";
+import { conexionDb } from "../conexionDb/ConexionDb.js";
 
 export const crearSolicitud = async (req, resp) => {
     const { id_usuario, tipo_solicitud, fecha_creacion, fecha_entrega, estado } = req.body

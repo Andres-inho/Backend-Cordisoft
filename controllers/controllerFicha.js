@@ -1,4 +1,4 @@
-import { conexionDb } from "../conexionDb/conexionDb.js";
+import { conexionDb } from "../conexionDb/ConexionDb.js";
 
 export const crearFicha = async (req, resp) => {
     const { nombre, estado, id_area, id_usuario, codigo } = req.body
