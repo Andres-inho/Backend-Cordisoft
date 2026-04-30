@@ -50,6 +50,9 @@ servidor.use("/estadisticas",rutasEstadisticas)
 import { rutasReportes } from './routes/routerReportes.js';
 servidor.use("/reportes", rutasReportes)
 
+import { rutasWhatsapp } from './routes/sesionWhatsapp.js';
+servidor.use("/sesion", rutasWhatsapp)
+
 
 
 servidor.listen(3000,()=>{
