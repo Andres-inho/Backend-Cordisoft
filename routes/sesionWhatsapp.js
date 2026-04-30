@@ -1,6 +1,6 @@
 import express from 'express';
 export const rutasWhatsapp = express.Router();
-const { guardarSesion, verificarSesion, cerrarSesion } = require('../controllers/sesionWhatsappController');
+import {guardarSesion, verificarSesion, cerrarSesion} from '../controllers/sesionWhatsappController'
 
 rutasWhatsapp.post('/guardar', guardarSesion);
 rutasWhatsapp.get('/verificar/:telefono', verificarSesion);

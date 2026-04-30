@@ -1,6 +1,6 @@
 import { conexionDb } from "../conexionDb/ConexionDb.js";
 
-const guardarSesion = async (req, res) => {
+export const guardarSesion = async (req, res) => {
   const { telefono, token, id_usuario, expires_at } = req.body;
 
   if (!telefono || !token || !id_usuario) {
@@ -33,7 +33,7 @@ const guardarSesion = async (req, res) => {
   }
 };
 
-const verificarSesion = async (req, res) => {
+export const verificarSesion = async (req, res) => {
   const { telefono } = req.params;
 
   try {
@@ -72,7 +72,7 @@ const verificarSesion = async (req, res) => {
   }
 };
 
-const cerrarSesion = async (req, res) => {
+export const cerrarSesion = async (req, res) => {
   const { telefono } = req.params;
 
   try {
@@ -83,5 +83,3 @@ const cerrarSesion = async (req, res) => {
     res.status(500).json({ mensaje: 'Error interno del servidor' });
   }
 };
-
-module.exports = { guardarSesion, verificarSesion, cerrarSesion };
