@@ -83,3 +83,38 @@ export const cerrarSesion = async (req, res) => {
     res.status(500).json({ mensaje: 'Error interno del servidor' });
   }
 };
+
+export const obtenerEstado = async (req, res) => {
+  const { telefono } = req.params;
+  try {
+    const [rows] = await db.query(
+      'SELECT paso, correo FROM estado_login_whatsapp WHERE telefono = ?',
+      [telefono]
+    );
+    if (rows.length === 0) {
+      // Primera vez que escribe — crear estado inicial
+      await db.query(
+        'INSERT INTO estado_login_whatsapp (telefono, paso) VALUES (?, "esperando_correo")',
+        [telefono]
+      );
+      return res.json({ paso: 'esperando_correo', correo: null });
+    }
+    res.json({ paso: rows[0].paso, correo: rows[0].correo });
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error interno' });
+  }
+};
+
+export const guardarEstado = async (req, res) => {
+  const { telefono, paso, correo } = req.body;
+  try {
+    await db.query(
+      `INSERT INTO estado_login_whatsapp (telefono, paso, correo) VALUES (?, ?, ?)
+       ON DUPLICATE KEY UPDATE paso = VALUES(paso), correo = VALUES(correo)`,
+      [telefono, paso, correo || null]
+    );
+    res.json({ mensaje: 'Estado guardado' });
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error interno' });
+  }
+};
